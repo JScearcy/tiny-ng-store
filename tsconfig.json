@@ -1,0 +1,17 @@
+{
+	"compilerOptions": {
+		"target": "ES5",
+		"emitDecoratorMetadata": true,
+		"experimentalDecorators": true,
+		"module": "commonjs",
+		"moduleResolution": "node",
+		"outDir": "dist",
+		"declaration": true
+	},
+	"files": [
+    "typings/main.d.ts",
+    "src/tinyngstore.ts",
+    "src/store-action.ts",
+    "src/index.ts"
+	]
+}
