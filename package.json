@@ -4,7 +4,8 @@
   "description": "Tiny RxJS store for @angular",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "tsc && gulp"
   },
   "keywords": [
     "Angular2",
@@ -13,8 +14,13 @@
   "author": "JakeS",
   "license": "MIT",
   "dependencies": {
-    "@angular/core": "^2.0.0-rc.2",
-    "rxjs": "^5.0.0-beta.6",
+    "@angular/core": "^2.0.0-rc.1",
+    "rxjs": "5.0.0-beta.6",
     "zone.js": "^0.6.12"
+  },
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-concat": "^2.6.0",
+    "gulp-uglify": "^1.5.3"
   }
 }
