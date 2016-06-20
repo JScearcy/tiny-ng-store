@@ -30,7 +30,7 @@ export class TinyNgStore {
         this.state = this.storeInit([], this.dispatcher);
     }
 
-    public InsertItem(storeItem: StoreItem) {
+    public InsertItem(storeItem: StoreItem): void {
         this.dispatcher.next(new AddItem(storeItem));
     }
 
@@ -42,14 +42,19 @@ export class TinyNgStore {
         this.dispatcher.next(new UpdateItem(storeItem));
     }
 
-    public GetItem(storeItem: StoreItem): Observable<StoreItem> {
+    public GetItem(name: string): Observable<StoreItem> {
         return this.state.map((s: StoreItem[]) => {
-            return s.find((si: StoreItem) => si.name === storeItem.name);
+            if (s) {
+                return s.find((si: StoreItem) => si.name === name);
+            } else {
+                return this.GetItem(name);
+            }
         });
     }
 
     private store(initState: StoreItem[], actions: Observable<StoreAction>): Observable<StoreItem[]> {
         return actions.scan((state: StoreItem[], action: StoreAction) => {
+            state = state || [];
             switch (action.constructor) {
                 case AddItem:
                     let exists: StoreItem[] = state.filter((s: StoreItem) => action.storeItem.name === s.name);
@@ -75,13 +80,10 @@ export class TinyNgStore {
         return sub;
     }
 
-    private updateItem(newItem: StoreItem): StoreItem {
+    private updateItem(item: StoreItem): StoreItem {
         let updatedItem: any = {};
-        for (let key in newItem) {
-            if (newItem) {
-                updatedItem[key] = newItem[key];
-            }
-        }
+        Object.keys(item).map((key: string) => updatedItem[key] = item[key]);
+
         return updatedItem;
     }
 }

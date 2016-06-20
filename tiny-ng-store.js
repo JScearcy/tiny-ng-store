@@ -35,9 +35,8 @@ var UpdateItem = (function () {
 }());
 exports.UpdateItem = UpdateItem;
 var TinyNgStore = (function () {
-    function TinyNgStore(dispatcher) {
-        this.dispatcher = dispatcher;
-        //this.dispatcher = new Subject<StoreAction>();
+    function TinyNgStore() {
+        this.dispatcher = new Subject_1.Subject();
         this.state = this.storeInit([], this.dispatcher);
     }
     TinyNgStore.prototype.InsertItem = function (storeItem) {
@@ -49,14 +48,21 @@ var TinyNgStore = (function () {
     TinyNgStore.prototype.UpdateItem = function (storeItem) {
         this.dispatcher.next(new UpdateItem(storeItem));
     };
-    TinyNgStore.prototype.GetItem = function (storeItem) {
+    TinyNgStore.prototype.GetItem = function (name) {
+        var _this = this;
         return this.state.map(function (s) {
-            return s.find(function (si) { return si.name === storeItem.name; });
+            if (s) {
+                return s.find(function (si) { return si.name === name; });
+            }
+            else {
+                return _this.GetItem(name);
+            }
         });
     };
     TinyNgStore.prototype.store = function (initState, actions) {
         var _this = this;
         return actions.scan(function (state, action) {
+            state = state || [];
             switch (action.constructor) {
                 case AddItem:
                     var exists = state.filter(function (s) { return action.storeItem.name === s.name; });
@@ -80,18 +86,14 @@ var TinyNgStore = (function () {
         this.store(initState, actions).subscribe(function (s) { return sub.next(s); });
         return sub;
     };
-    TinyNgStore.prototype.updateItem = function (newItem) {
+    TinyNgStore.prototype.updateItem = function (item) {
         var updatedItem = {};
-        for (var key in newItem) {
-            if (newItem) {
-                updatedItem[key] = newItem[key];
-            }
-        }
+        Object.keys(item).map(function (key) { return updatedItem[key] = item[key]; });
         return updatedItem;
     };
     TinyNgStore = __decorate([
         core_1.Injectable(), 
-        __metadata('design:paramtypes', [Subject_1.Subject])
+        __metadata('design:paramtypes', [])
     ], TinyNgStore);
     return TinyNgStore;
 }());
