@@ -5,9 +5,6 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
 var core_1 = require('@angular/core');
 var Subject_1 = require('rxjs/Subject');
 var BehaviorSubject_1 = require('rxjs/BehaviorSubject');
@@ -42,8 +39,8 @@ var TinyNgStore = (function () {
     TinyNgStore.prototype.InsertItem = function (storeItem) {
         this.dispatcher.next(new AddItem(storeItem));
     };
-    TinyNgStore.prototype.DeleteItem = function (storeItem) {
-        this.dispatcher.next(new RemoveItem(storeItem));
+    TinyNgStore.prototype.DeleteItem = function (name) {
+        this.dispatcher.next(new RemoveItem({ name: name }));
     };
     TinyNgStore.prototype.UpdateItem = function (storeItem) {
         this.dispatcher.next(new UpdateItem(storeItem));
@@ -92,8 +89,7 @@ var TinyNgStore = (function () {
         return updatedItem;
     };
     TinyNgStore = __decorate([
-        core_1.Injectable(), 
-        __metadata('design:paramtypes', [])
+        core_1.Injectable()
     ], TinyNgStore);
     return TinyNgStore;
 }());

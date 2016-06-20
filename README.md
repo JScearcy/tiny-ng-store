@@ -15,7 +15,7 @@ A tiny API and small footprint allow for a quick and efficient setup.
 ### Inject
     import {TinyNgStore, StoreItem} from 'tiny-ng-store/tiny-ng-store';
 
-    constructor(private storeService: TinyNgStore
+    constructor(private storeService: TinyNgStore) {};
 
 ### Get Item
     this.storeService.GetItem('storeName')
@@ -28,5 +28,9 @@ Use any type of data that you want.
     this.storeService.UpdateItem({ name: 'storeName' data: 'Updated Data' });
 
 ### Remove Item
-    this.storeService.DeleteItem({ name: 'storeName' data: 'Any Data' });
+    this.storeService.DeleteItem('storeName');
 
+### Run tests   
+    npm install
+    npm run tests
+This will run live server and open the tiny-ng-store.spec.html file in browser.

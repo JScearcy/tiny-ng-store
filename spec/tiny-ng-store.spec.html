@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="content-type" content="test/html;charset=utf-8">
+        <title>tiny-ng-store Tests</title>
+        <link rel="stylesheet" href="../node_modules/jasmine-core/lib/jasmine-core/jasmine.css">
+        <script src="../node_modules/zone.js/dist/zone.js"></script>
+        <script src="../node_modules/reflect-metadata/Reflect.js"></script>
+        <script src="../node_modules/jasmine-core/lib/jasmine-core/jasmine.js"></script>
+        <script src="../node_modules/jasmine-core/lib/jasmine-core/jasmine-html.js"></script>
+        <script src="../node_modules/jasmine-core/lib/jasmine-core/boot.js"></script>
+    </head>
+    <body>
+        <script src="../node_modules/systemjs/dist/system.src.js"></script>
+        <script>
+            System.config({
+                map: {
+                    'tiny-ng-store': '../',
+                    '@angular': '../node_modules/@angular',
+                    'rxjs': '../node_modules/rxjs'
+                },
+                packages: {
+                    'spec': { defaultExtension: 'js' },
+                    '@angular/core': { main: 'index.js', defaultExtension: 'js' },
+                    'rxjs': { defaultExtension: 'js' },
+                    'tiny-ng-store': {defaultExtension: 'js'}
+                }
+            });
+            System.import('tiny-ng-store.spec.js')
+                .then(window.onload)
+                .catch(console.error.bind(console));
+        </script>
+    </body>
+</html>

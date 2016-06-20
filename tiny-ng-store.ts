@@ -34,8 +34,8 @@ export class TinyNgStore {
         this.dispatcher.next(new AddItem(storeItem));
     }
 
-    public DeleteItem(storeItem: StoreItem): void {
-        this.dispatcher.next(new RemoveItem(storeItem));
+    public DeleteItem(name: string): void {
+        this.dispatcher.next(new RemoveItem({ name: name }));
     }
 
     public UpdateItem(storeItem: StoreItem): void {
