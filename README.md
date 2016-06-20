@@ -1,3 +1,5 @@
+[![npm version](https://badge.fury.io/js/tiny-ng-store.svg)](https://badge.fury.io/js/tiny-ng-store)
+
 # tiny-ng-store
 
 A flexible store for Angular 2 projects. 
