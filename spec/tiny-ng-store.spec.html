@@ -8,7 +8,7 @@
         <script src="../node_modules/reflect-metadata/Reflect.js"></script>
         <script src="../node_modules/jasmine-core/lib/jasmine-core/jasmine.js"></script>
         <script src="../node_modules/jasmine-core/lib/jasmine-core/jasmine-html.js"></script>
-        <script src="../node_modules/jasmine-core/lib/jasmine-core/boot.js"></script>
+        <!--<script src="../node_modules/jasmine-core/lib/jasmine-core/boot.js"></script>-->
     </head>
     <body>
         <script src="../node_modules/systemjs/dist/system.src.js"></script>
@@ -29,6 +29,11 @@
             System.import('tiny-ng-store.spec.js')
                 .then(window.onload)
                 .catch(console.error.bind(console));
+
+            var console_reporter = new jasmine.ConsoleReporter()
+            jasmine.getEnv().addReporter(new jasmine.TrivialReporter());
+            jasmine.getEnv().addReporter(console_reporter);
+            jasmine.getEnv().execute();
         </script>
     </body>
 </html>
