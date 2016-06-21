@@ -22,6 +22,7 @@ A tiny API and small footprint allow for a quick setup.
 
 ### Get Item
 * Returns an Observable<StoreItem>
+
     this.storeService.GetItem('storeName')
 
 ### Insert Item 
@@ -42,4 +43,5 @@ This will run live server and open the tiny-ng-store.spec.html file in browser.
 
 #### Examples
 * A small Angular 2 app that will track the amount of searches on page load.
+
     https://github.com/JScearcy/ng2-github-starter
