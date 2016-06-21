@@ -21,13 +21,12 @@ A tiny API and small footprint allow for a quick setup.
     constructor(private storeService: TinyNgStore) {};
 
 ### Get Item
-* Returns an Observable<StoreItem>
-
     this.storeService.GetItem('storeName')
+* Returns an Observable<StoreItem>
 
 ### Insert Item 
     this.storeService.InsertItem({ name: 'storeName' data: 'Any Data' });
-Use any type of data that you want. 
+* Use any type of data that you want. 
 
 ### Update Item
     this.storeService.UpdateItem({ name: 'storeName' data: 'Updated Data' });
@@ -38,7 +37,7 @@ Use any type of data that you want.
 ### Run tests   
     npm install
     npm run tests
-This will run live server and open the tiny-ng-store.spec.html file in browser.
+* This will run live server and open the tiny-ng-store.spec.html file in browser.
 
 
 #### Examples
