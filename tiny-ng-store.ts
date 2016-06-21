@@ -10,11 +10,11 @@ export interface StoreItem {
     data?: any;
 }
 
-export class AddItem { constructor(public storeItem: StoreItem) {} }
-export class RemoveItem { constructor(public storeItem: StoreItem) {} }
-export class UpdateItem { constructor(public storeItem: StoreItem) {} }
+class AddItem { constructor(public storeItem: StoreItem) {} }
+class RemoveItem { constructor(public storeItem: StoreItem) {} }
+class UpdateItem { constructor(public storeItem: StoreItem) {} }
 
-export type StoreAction
+type StoreAction
     = AddItem
     | RemoveItem
     | UpdateItem
@@ -30,8 +30,9 @@ export class TinyNgStore {
         this.state = this.storeInit([], this.dispatcher);
     }
 
-    public InsertItem(storeItem: StoreItem): void {
+    public InsertItem(storeItem: StoreItem): Observable<StoreItem> {
         this.dispatcher.next(new AddItem(storeItem));
+        return this.GetItem(storeItem.name);
     }
 
     public DeleteItem(name: string): void {
@@ -44,11 +45,7 @@ export class TinyNgStore {
 
     public GetItem(name: string): Observable<StoreItem> {
         return this.state.map((s: StoreItem[]) => {
-            if (s) {
-                return s.find((si: StoreItem) => si.name === name);
-            } else {
-                return this.GetItem(name);
-            }
+            return s.find((si: StoreItem) => si.name === name);
         });
     }
 

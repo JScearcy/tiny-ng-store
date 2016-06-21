@@ -11,18 +11,18 @@ testing_1.describe('tiny-ng-store', function () {
         tinyNgStore = _tinyNgStore;
     }));
     testing_1.it('Contains InsertItem method', function () {
-        var item = { data: [], name: 'testItem' };
         testing_1.expect(tinyNgStore.InsertItem).toBeTruthy();
-        testing_1.expect(tinyNgStore.InsertItem(item)).toBe(undefined);
+        var item = tinyNgStore.InsertItem({ data: [], name: 'testItem' });
+        testing_1.expect(typeof item).toBe(typeof new Observable_1.Observable());
     });
     testing_1.it('Contains UpdateItem method', function () {
         var item = { data: ['new item'], name: 'testItem' };
         testing_1.expect(tinyNgStore.UpdateItem).toBeTruthy();
-        testing_1.expect(tinyNgStore.InsertItem(item)).toBe(undefined);
+        testing_1.expect(tinyNgStore.UpdateItem(item)).toBe(undefined);
     });
     testing_1.it('Contains GetItem method', function () {
+        testing_1.expect(tinyNgStore.GetItem).toBeTruthy();
         var item = tinyNgStore.GetItem('testItem');
-        testing_1.expect(tinyNgStore.GetItem).not.toBeNull();
         testing_1.expect(item).toBeTruthy();
         testing_1.expect(typeof item).toBe(typeof new Observable_1.Observable());
     });

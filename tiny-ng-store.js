@@ -16,21 +16,18 @@ var AddItem = (function () {
     }
     return AddItem;
 }());
-exports.AddItem = AddItem;
 var RemoveItem = (function () {
     function RemoveItem(storeItem) {
         this.storeItem = storeItem;
     }
     return RemoveItem;
 }());
-exports.RemoveItem = RemoveItem;
 var UpdateItem = (function () {
     function UpdateItem(storeItem) {
         this.storeItem = storeItem;
     }
     return UpdateItem;
 }());
-exports.UpdateItem = UpdateItem;
 var TinyNgStore = (function () {
     function TinyNgStore() {
         this.dispatcher = new Subject_1.Subject();
@@ -38,6 +35,7 @@ var TinyNgStore = (function () {
     }
     TinyNgStore.prototype.InsertItem = function (storeItem) {
         this.dispatcher.next(new AddItem(storeItem));
+        return this.GetItem(storeItem.name);
     };
     TinyNgStore.prototype.DeleteItem = function (name) {
         this.dispatcher.next(new RemoveItem({ name: name }));
@@ -46,14 +44,8 @@ var TinyNgStore = (function () {
         this.dispatcher.next(new UpdateItem(storeItem));
     };
     TinyNgStore.prototype.GetItem = function (name) {
-        var _this = this;
         return this.state.map(function (s) {
-            if (s) {
-                return s.find(function (si) { return si.name === name; });
-            }
-            else {
-                return _this.GetItem(name);
-            }
+            return s.find(function (si) { return si.name === name; });
         });
     };
     TinyNgStore.prototype.store = function (initState, actions) {

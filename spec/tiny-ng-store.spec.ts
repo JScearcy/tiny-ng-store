@@ -15,20 +15,20 @@ describe('tiny-ng-store', () => {
     }));
 
     it('Contains InsertItem method', () => {
-        let item: StoreItem = { data: [], name: 'testItem' };
         expect(tinyNgStore.InsertItem).toBeTruthy();
-        expect(tinyNgStore.InsertItem(item)).toBe(undefined);
+        let item: Observable<StoreItem> = tinyNgStore.InsertItem({ data: [], name: 'testItem' });
+        expect(typeof item).toBe(typeof new Observable<StoreItem>());
     });
 
     it('Contains UpdateItem method', () => {
         let item: StoreItem = { data: ['new item'], name: 'testItem' };
         expect(tinyNgStore.UpdateItem).toBeTruthy();
-        expect(tinyNgStore.InsertItem(item)).toBe(undefined);
+        expect(tinyNgStore.UpdateItem(item)).toBe(undefined);
     });
 
     it('Contains GetItem method', () => {
+        expect(tinyNgStore.GetItem).toBeTruthy();
         let item: Observable<StoreItem> = tinyNgStore.GetItem('testItem');
-        expect(tinyNgStore.GetItem).not.toBeNull();
         expect(item).toBeTruthy();
         expect(typeof item).toBe(typeof new Observable<StoreItem>());
     });

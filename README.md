@@ -22,11 +22,12 @@ A tiny API and small footprint allow for a quick setup.
 
 ### Get Item
     this.storeService.GetItem('storeName')
-* Returns an Observable<StoreItem>
+* Returns a StoreItem Observable 
 
 ### Insert Item 
     this.storeService.InsertItem({ name: 'storeName' data: 'Any Data' });
-* Use any type of data that you want. 
+* Use any type of data that you want
+* Returns a StoreItem Observable
 
 ### Update Item
     this.storeService.UpdateItem({ name: 'storeName' data: 'Updated Data' });
