@@ -4,7 +4,7 @@
 # tiny-ng-store
 
 A flexible store for Angular 2 projects. 
-A tiny API and small footprint allow for a quick and efficient setup.
+A tiny API and small footprint allow for a quick setup.
 
 
 
@@ -21,6 +21,7 @@ A tiny API and small footprint allow for a quick and efficient setup.
     constructor(private storeService: TinyNgStore) {};
 
 ### Get Item
+* Returns an Observable<StoreItem>
     this.storeService.GetItem('storeName')
 
 ### Insert Item 
@@ -37,3 +38,8 @@ Use any type of data that you want.
     npm install
     npm run tests
 This will run live server and open the tiny-ng-store.spec.html file in browser.
+
+
+#### Examples
+* A small Angular 2 app that will track the amount of searches on page load.
+    https://github.com/JScearcy/ng2-github-starter
