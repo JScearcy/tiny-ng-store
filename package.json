@@ -1,6 +1,6 @@
 {
-  "name": "tiny-ng-store",
-  "version": "0.2.0",
+  "name": "tiny-ng2-store",
+  "version": "0.2.1",
   "description": "Tiny RxJS store for @angular",
   "main": "tiny-ng-store.js",
   "scripts": {
