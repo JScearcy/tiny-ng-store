@@ -16,7 +16,7 @@ test_script:
   - node --version
   - npm --version
   # run tests
-  - npm run headless-test
+  - npm run appveyor-test
 
 # Don't actually build.
 build: off

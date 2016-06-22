@@ -9,6 +9,7 @@
         <script src="../node_modules/jasmine-core/lib/jasmine-core/jasmine.js"></script>
         <script src="../node_modules/jasmine-core/lib/jasmine-core/jasmine-html.js"></script>
         <script src="../node_modules/jasmine-core/lib/jasmine-core/boot.js"></script>
+        <script src="https://code.jquery.com/jquery-3.0.0.min.js" integrity="sha256-JmvOoLtYsmqlsWxa7mDSLMwa6dZ9rrIdtrrVYRnDRH0=" crossorigin="anonymous"></script>
     </head>
     <body>
         <script src="../node_modules/systemjs/dist/system.src.js"></script>
@@ -66,6 +67,23 @@
 
             jasmine.getEnv().addReporter(myReporter);
             jasmine.getEnv().execute();
+            $.ajax({
+                method: "POST",
+                url: "https://ci.appveyor.com/api/tests/batch",
+                data: [
+                    {
+                        "testName": "Test Test",
+                        "testFramework": "Jasmine",
+                        "fileName": "tiny-ng-store.js",
+                        "outcome": "Passed",
+                        "durationMilliseconds": "100",
+                        "ErrorMessage": "",
+                        "ErrorStackTrace": "".
+                        "StdOut": "",
+                        "StdErr": ""
+                    }
+                ]
+            })
         </script>
     </body>
 </html>

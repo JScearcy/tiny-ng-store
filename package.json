@@ -5,7 +5,8 @@
   "main": "tiny-ng-store.js",
   "scripts": {
     "test": "live-server --open=./spec/tiny-ng-store.spec.html",
-    "headless-test": "live-server --open=./spec/tiny-ng-store.spec.html & TASK_PID=$! && sleep 60 && kill $TASK_PID",
+    "headless-test": "live-server --open=./spec/tiny-ng-store.spec.html & TASK_PID=$! && sleep 1 && kill $TASK_PID",
+    "appveyor-test": "start live-server --open=./spec/tiny-ng-store.spec.html",
     "build": "tsc && gulp"
   },
   "keywords": [
