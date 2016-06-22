@@ -4,8 +4,8 @@
   "description": "Tiny RxJS store for @angular",
   "main": "tiny-ng-store.js",
   "scripts": {
-    "test": "live-server --open=./spec/tiny-ng-store.spec.html",
-    "appveyor-test": "node ./spec/tiny-ng-store.server.js",
+    "test": "node ./spec/tiny-ng-store.server.js",
+    "server-test": "live-server --open=./spec/tiny-ng-store.spec.html",
     "build": "tsc && gulp"
   },
   "keywords": [
