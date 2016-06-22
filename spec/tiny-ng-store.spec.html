@@ -64,26 +64,28 @@
                     console.log('Finished suite');
                 }
             };
-
+            var console_reporter = new ConsoleReporter();
+            jasmine.getEnv().addReporter(new TrivialReporter());
+            jasmine.getEnv().addReporter(console_reporter);
             jasmine.getEnv().addReporter(myReporter);
             jasmine.getEnv().execute();
-            $.ajax({
-                method: "POST",
-                url: "https://ci.appveyor.com/api/tests/batch",
-                data: [
-                    {
-                        "testName": "Test Test",
-                        "testFramework": "Jasmine",
-                        "fileName": "tiny-ng-store.js",
-                        "outcome": "Passed",
-                        "durationMilliseconds": "100",
-                        "ErrorMessage": "",
-                        "ErrorStackTrace": "".
-                        "StdOut": "",
-                        "StdErr": ""
-                    }
-                ]
-            })
+            // $.ajax({
+            //     method: "POST",
+            //     url: "https://ci.appveyor.com/api/tests/batch",
+            //     data: [
+            //         {
+            //             "testName": "Test Test",
+            //             "testFramework": "Jasmine",
+            //             "fileName": "tiny-ng-store.js",
+            //             "outcome": "Passed",
+            //             "durationMilliseconds": "100",
+            //             "ErrorMessage": "",
+            //             "ErrorStackTrace": "".
+            //             "StdOut": "",
+            //             "StdErr": ""
+            //         }
+            //     ]
+            // })
         </script>
     </body>
 </html>
