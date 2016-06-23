@@ -8,21 +8,31 @@ import {Subject} from 'rxjs/Subject';
 
 describe('tiny-ng-store', () => {
     let tinyNgStore: TinyNgStore;
+    let blankObservable: Observable<StoreItem>;
 
     beforeEachProviders(() => [TinyNgStore]);
 
     beforeEach(inject([TinyNgStore], (_tinyNgStore: TinyNgStore): void => {
         tinyNgStore = _tinyNgStore;
+        blankObservable = new Observable<StoreItem>();
     }));
     it('Creates internal state', () => {
         expect(typeof tinyNgStore["state"]).toBe(typeof new Observable<StoreItem[]>());
         expect(typeof tinyNgStore["dispatcher"]).toBe(typeof new Subject<any>());
     });
 
+    it('Does not fail on two inserts of the same item', () => {
+        spyOn(tinyNgStore, 'InsertItem');
+        let item: Observable<StoreItem> = tinyNgStore.InsertItem({ data: [], name: 'testItem' });
+        tinyNgStore.InsertItem({ data: [], name: 'testItem' });
+        expect(tinyNgStore.InsertItem).toHaveBeenCalled();
+        expect(typeof item).toBe(typeof blankObservable);
+    });
+
     it('Contains InsertItem method', () => {
         expect(tinyNgStore.InsertItem).toBeTruthy();
         let item: Observable<StoreItem> = tinyNgStore.InsertItem({ data: [], name: 'testItem' });
-        expect(typeof item).toBe(typeof new Observable<StoreItem>());
+        expect(typeof item).toBe(typeof blankObservable);
     });
 
     it('Contains UpdateItem method', () => {
@@ -35,7 +45,7 @@ describe('tiny-ng-store', () => {
         expect(tinyNgStore.GetItem).toBeTruthy();
         let item: Observable<StoreItem> = tinyNgStore.GetItem('testItem');
         expect(item).toBeTruthy();
-        expect(typeof item).toBe(typeof new Observable<StoreItem>());
+        expect(typeof item).toBe(typeof blankObservable);
     });
 
     it('Contains DeleteItem method', () => {
