@@ -4,15 +4,20 @@
 import {beforeEachProviders, beforeEach, describe, expect, it, inject} from '@angular/core/testing';
 import {TinyNgStore, StoreItem} from '../tiny-ng-store';
 import {Observable} from 'rxjs/Observable';
+import {Subject} from 'rxjs/Subject';
 
 describe('tiny-ng-store', () => {
     let tinyNgStore: TinyNgStore;
 
     beforeEachProviders(() => [TinyNgStore]);
 
-    beforeEach(inject([TinyNgStore], (_tinyNgStore) => {
+    beforeEach(inject([TinyNgStore], (_tinyNgStore: TinyNgStore): void => {
         tinyNgStore = _tinyNgStore;
     }));
+    it('Creates internal state', () => {
+        expect(typeof tinyNgStore["state"]).toBe(typeof new Observable<StoreItem[]>());
+        expect(typeof tinyNgStore["dispatcher"]).toBe(typeof new Subject<any>());
+    });
 
     it('Contains InsertItem method', () => {
         expect(tinyNgStore.InsertItem).toBeTruthy();
@@ -38,4 +43,13 @@ describe('tiny-ng-store', () => {
         expect(tinyNgStore.DeleteItem).toBeTruthy();
         expect(tinyNgStore.DeleteItem(itemName)).toBe(undefined);
     });
+
+    it('Calls GetItem if InsertItem finds existing', () => {
+        let item: StoreItem = { data: ['new item'], name: 'testItem' };
+        tinyNgStore.InsertItem(item);
+        spyOn(tinyNgStore, 'GetItem');
+        tinyNgStore.InsertItem(item);
+        expect(tinyNgStore.GetItem).toHaveBeenCalled();
+    });
+
 });
