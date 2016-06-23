@@ -1,0 +1,329 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Code coverage report for tiny-ng-store\tiny-ng-store.js</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="../prettify.css" />
+    <link rel="stylesheet" href="../base.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style type='text/css'>
+        .coverage-summary .sorter {
+            background-image: url(../sort-arrow-sprite.png);
+        }
+    </style>
+</head>
+<body>
+<div class='wrapper'>
+  <div class='pad1'>
+    <h1>
+      <a href="../index.html">all files</a> / <a href="index.html">tiny-ng-store/</a> tiny-ng-store.js
+    </h1>
+    <div class='clearfix'>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">89.71% </span>
+        <span class="quiet">Statements</span>
+        <span class='fraction'>61/68</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">46.88% </span>
+        <span class="quiet">Branches</span>
+        <span class='fraction'>15/32</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">87.5% </span>
+        <span class="quiet">Functions</span>
+        <span class='fraction'>21/24</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">94.92% </span>
+        <span class="quiet">Lines</span>
+        <span class='fraction'>56/59</span>
+      </div>
+    </div>
+  </div>
+  <div class='status-line high'></div>
+<pre><table class="coverage">
+<tr><td class="line-count quiet">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">3×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">5×</span>
+<span class="cline-any cline-yes">5×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">3×</span>
+<span class="cline-any cline-yes">3×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">3×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">5×</span>
+<span class="cline-any cline-yes">6×</span>
+<span class="cline-any cline-yes">5×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">5×</span>
+<span class="cline-any cline-yes">5×</span>
+<span class="cline-any cline-yes">6×</span>
+<span class="cline-any cline-yes">6×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3×</span>
+<span class="cline-any cline-yes">3×</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">"use strict";
+var __decorate = (this &amp;&amp; this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c &lt; 3 ? target : <span class="branch-1 cbranch-no" title="branch not covered" >desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc,</span> d;
+    <span class="missing-if-branch" title="else path not taken" >E</span>if (typeof Reflect === "object" &amp;&amp; typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else <span class="cstat-no" title="statement not covered" >for (var i = decorators.length - 1; i &gt;= 0; i--) <span class="cstat-no" title="statement not covered" >if (d = decorators[i]) <span class="cstat-no" title="statement not covered" >r = (c &lt; 3 ? d(r) : c &gt; 3 ? d(target, key, r) : d(target, key)) || r;</span></span></span>
+    return c &gt; 3 &amp;&amp; <span class="branch-1 cbranch-no" title="branch not covered" >r </span>&amp;&amp; <span class="branch-2 cbranch-no" title="branch not covered" >Object.defineProperty(target, key, r),</span> r;
+};
+var core_1 = require('@angular/core');
+var Subject_1 = require('rxjs/Subject');
+var BehaviorSubject_1 = require('rxjs/BehaviorSubject');
+require('rxjs/add/operator/scan');
+require('rxjs/add/operator/map');
+var AddItem = (function () {
+    function AddItem(storeItem) {
+        this.storeItem = storeItem;
+    }
+    return AddItem;
+}());
+var RemoveItem = (function () {
+    function RemoveItem(storeItem) {
+        this.storeItem = storeItem;
+    }
+    return RemoveItem;
+}());
+var UpdateItem = (function () {
+    function UpdateItem(storeItem) {
+        this.storeItem = storeItem;
+    }
+    return UpdateItem;
+}());
+var TinyNgStore = (function () {
+    function TinyNgStore() {
+        this.dispatcher = new Subject_1.Subject();
+        this.state = this.storeInit([], this.dispatcher);
+    }
+    TinyNgStore.prototype.InsertItem = function (storeItem) {
+        this.dispatcher.next(new AddItem(storeItem));
+        return this.GetItem(storeItem.name);
+    };
+    TinyNgStore.prototype.DeleteItem = function (name) {
+        this.dispatcher.next(new RemoveItem({ name: name }));
+    };
+    TinyNgStore.prototype.UpdateItem = function (storeItem) {
+        this.dispatcher.next(new UpdateItem(storeItem));
+    };
+    TinyNgStore.prototype.GetItem = function (name) {
+        return this.state.map(<span class="fstat-no" title="function not covered" >function (s) {</span>
+<span class="cstat-no" title="statement not covered" >            return s.find(<span class="fstat-no" title="function not covered" >function (si) {</span> <span class="cstat-no" title="statement not covered" >return si.name === name; </span>});</span>
+        });
+    };
+    TinyNgStore.prototype.storeInit = function (initState, actions) {
+        var sub = new BehaviorSubject_1.BehaviorSubject(initState);
+        this.store(initState, actions).subscribe(function (s) { return sub.next(s); });
+        return sub;
+    };
+    TinyNgStore.prototype.store = function (initState, actions) {
+        var _this = this;
+        return actions.scan(function (state, action) {
+            state = state || <span class="branch-1 cbranch-no" title="branch not covered" >[];</span>
+            switch (action.constructor) {
+                case AddItem:
+                    var exists = state.filter(function (s) { return action.storeItem.name === s.name; });
+                    if (exists.length &lt;= 0) {
+                        return state.concat([action.storeItem]);
+                    }
+                    else {
+                        return _this.dispatcher.next(new UpdateItem(action.storeItem));
+                    }
+                case RemoveItem:
+                    return state.filter(<span class="fstat-no" title="function not covered" >function (s) {</span> <span class="cstat-no" title="statement not covered" >return s.name !== action.storeItem.name; </span>});
+                case UpdateItem:
+                    return state.map(function (s) { return s.name !== action.storeItem.name ? <span class="branch-0 cbranch-no" title="branch not covered" >s </span>: _this.updateItem(action.storeItem); });
+<span class="branch-3 cbranch-no" title="branch not covered" >                default:</span>
+<span class="cstat-no" title="statement not covered" >                    return state;</span>
+            }
+        }, initState);
+    };
+    TinyNgStore.prototype.updateItem = function (item) {
+        var updatedItem = {};
+        Object.keys(item).map(function (key) { return updatedItem[key] = item[key]; });
+        return updatedItem;
+    };
+    TinyNgStore = __decorate([
+        core_1.Injectable()
+    ], TinyNgStore);
+    return TinyNgStore;
+}());
+exports.TinyNgStore = TinyNgStore;
+&nbsp;</pre></td></tr>
+</table></pre>
+<div class='push'></div><!-- for sticky footer -->
+</div><!-- /wrapper -->
+<div class='footer quiet pad2 space-top1 center small'>
+  Code coverage
+  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Thu Jun 23 2016 10:11:26 GMT-0500 (Central Daylight Time)
+</div>
+</div>
+<script src="../prettify.js"></script>
+<script>
+window.onload = function () {
+        if (typeof prettyPrint === 'function') {
+            prettyPrint();
+        }
+};
+</script>
+<script src="../sorter.js"></script>
+</body>
+</html>
