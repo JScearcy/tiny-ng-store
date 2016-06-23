@@ -1,4 +1,5 @@
 [![Build status](https://ci.appveyor.com/api/projects/status/6r401wlebcgprnam?svg=true)](https://ci.appveyor.com/project/JScearcy/tiny-ng-store)
+[![Build Status](https://travis-ci.org/JScearcy/tiny-ng-store.svg?branch=master)](https://travis-ci.org/JScearcy/tiny-ng-store)
 [![npm version](https://badge.fury.io/js/tiny-ng-store.svg)](https://badge.fury.io/js/tiny-ng-store)
 
 # tiny-ng-store

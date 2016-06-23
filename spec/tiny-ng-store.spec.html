@@ -59,23 +59,6 @@
                         console.log('AfterAll ' + result.failedExpectations[i].message);
                         console.log(result.failedExpectations[i].stack);
                     }
-                    $.ajax({
-                        method: "POST",
-                        url: "https://ci.appveyor.com/api/tests/batch",
-                        data: [
-                            {
-                                "testName": "Test Test",
-                                "testFramework": "Jasmine",
-                                "fileName": "tiny-ng-store.js",
-                                "outcome": "Passed",
-                                "durationMilliseconds": "100",
-                                "ErrorMessage": "",
-                                "ErrorStackTrace": "".
-                                "StdOut": "",
-                                "StdErr": ""
-                            }
-                        ]
-                    });
                 },
                 jasmineDone: function() {
                     console.log('Finished suite');
