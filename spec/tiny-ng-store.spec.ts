@@ -38,4 +38,12 @@ describe('tiny-ng-store', () => {
         expect(tinyNgStore.DeleteItem).toBeTruthy();
         expect(tinyNgStore.DeleteItem(itemName)).toBe(undefined);
     });
+
+    it('Calls GetItem if InsertItem finds existing', () => {
+        let item: StoreItem = { data: ['new item'], name: 'testItem' };
+        tinyNgStore.InsertItem(item);
+        spyOn(tinyNgStore, 'GetItem');
+        tinyNgStore.InsertItem(item);
+        expect(tinyNgStore.GetItem).toHaveBeenCalled();
+    });
 });

@@ -31,4 +31,11 @@ testing_1.describe('tiny-ng-store', function () {
         testing_1.expect(tinyNgStore.DeleteItem).toBeTruthy();
         testing_1.expect(tinyNgStore.DeleteItem(itemName)).toBe(undefined);
     });
+    testing_1.it('Calls GetItem if InsertItem finds existing', function () {
+        var item = { data: ['new item'], name: 'testItem' };
+        tinyNgStore.InsertItem(item);
+        spyOn(tinyNgStore, 'GetItem');
+        tinyNgStore.InsertItem(item);
+        testing_1.expect(tinyNgStore.GetItem).toHaveBeenCalled();
+    });
 });
