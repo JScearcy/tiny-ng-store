@@ -51,6 +51,11 @@ var TinyNgStore = (function () {
             return s.find(function (si) { return si.name === name; });
         });
     };
+    TinyNgStore.prototype.storeInit = function (initState, actions) {
+        var sub = new BehaviorSubject_1.BehaviorSubject(initState);
+        this.store(initState, actions).subscribe(function (s) { return sub.next(s); });
+        return sub;
+    };
     TinyNgStore.prototype.store = function (initState, actions) {
         var _this = this;
         return actions.scan(function (state, action) {
@@ -72,11 +77,6 @@ var TinyNgStore = (function () {
                     return state;
             }
         }, initState);
-    };
-    TinyNgStore.prototype.storeInit = function (initState, actions) {
-        var sub = new BehaviorSubject_1.BehaviorSubject(initState);
-        this.store(initState, actions).subscribe(function (s) { return sub.next(s); });
-        return sub;
     };
     TinyNgStore.prototype.updateItem = function (item) {
         var updatedItem = {};
