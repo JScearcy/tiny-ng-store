@@ -4,7 +4,7 @@
   "description": "Tiny RxJS store for @angular",
   "main": "tiny-ng-store.js",
   "scripts": {
-    "test": "node ./spec/tiny-ng-store.server.js",
+    "test": "karma start karma.conf.js",
     "server-test": "live-server --open=./spec/tiny-ng-store.spec.html",
     "build": "tsc && gulp",
     "build-test": "tsc ./spec/tiny-ng-store.spec.ts"
