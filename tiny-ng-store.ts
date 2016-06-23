@@ -49,6 +49,13 @@ export class TinyNgStore {
         });
     }
 
+    private storeInit(initState: StoreItem[], actions: Observable<StoreAction>): Observable<StoreItem[]> {
+        const sub: BehaviorSubject<StoreItem[]> = new BehaviorSubject(initState);
+        this.store(initState, actions).subscribe((s: any) => sub.next(s));
+
+        return sub;
+    }
+
     private store(initState: StoreItem[], actions: Observable<StoreAction>): Observable<StoreItem[]> {
         return actions.scan((state: StoreItem[], action: StoreAction) => {
             state = state || [];
@@ -68,13 +75,6 @@ export class TinyNgStore {
                     return state;
             }
         }, initState);
-    }
-
-    private storeInit(initState: StoreItem[], actions: Observable<StoreAction>): Observable<StoreItem[]> {
-        const sub: BehaviorSubject<StoreItem[]> = new BehaviorSubject(initState);
-        this.store(initState, actions).subscribe((s: any) => sub.next(s));
-
-        return sub;
     }
 
     private updateItem(item: StoreItem): StoreItem {

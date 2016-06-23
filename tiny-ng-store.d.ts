@@ -13,7 +13,7 @@ export declare class TinyNgStore {
     DeleteItem(name: string): void;
     UpdateItem(storeItem: StoreItem): void;
     GetItem(name: string): Observable<StoreItem>;
-    private store(initState, actions);
     private storeInit(initState, actions);
+    private store(initState, actions);
     private updateItem(item);
 }
