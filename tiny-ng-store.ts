@@ -50,10 +50,10 @@ export class TinyNgStore {
     }
 
     private storeInit(initState: StoreItem[], actions: Observable<StoreAction>): Observable<StoreItem[]> {
-        const sub: BehaviorSubject<StoreItem[]> = new BehaviorSubject(initState);
-        this.store(initState, actions).subscribe((s: any) => sub.next(s));
+        const behavior: BehaviorSubject<StoreItem[]> = new BehaviorSubject(initState);
+        this.store(initState, actions).subscribe((s: any) => behavior.next(s));
 
-        return sub;
+        return behavior;
     }
 
     private store(initState: StoreItem[], actions: Observable<StoreAction>): Observable<StoreItem[]> {
