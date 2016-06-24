@@ -17,13 +17,6 @@ testing_1.describe('tiny-ng-store', function () {
         testing_1.expect(typeof tinyNgStore["state"]).toBe(typeof new Observable_1.Observable());
         testing_1.expect(typeof tinyNgStore["dispatcher"]).toBe(typeof new Subject_1.Subject());
     });
-    testing_1.it('Does not fail on two inserts of the same item', function () {
-        spyOn(tinyNgStore, 'InsertItem');
-        var item = tinyNgStore.InsertItem({ data: [], name: 'testItem' });
-        tinyNgStore.InsertItem({ data: [], name: 'testItem' });
-        testing_1.expect(tinyNgStore.InsertItem).toHaveBeenCalled();
-        testing_1.expect(typeof item).toBe(typeof blankObservable);
-    });
     testing_1.it('Contains InsertItem method', function () {
         testing_1.expect(tinyNgStore.InsertItem).toBeTruthy();
         var item = tinyNgStore.InsertItem({ data: [], name: 'testItem' });

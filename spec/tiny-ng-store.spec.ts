@@ -21,14 +21,6 @@ describe('tiny-ng-store', () => {
         expect(typeof tinyNgStore["dispatcher"]).toBe(typeof new Subject<any>());
     });
 
-    it('Does not fail on two inserts of the same item', () => {
-        spyOn(tinyNgStore, 'InsertItem');
-        let item: Observable<StoreItem> = tinyNgStore.InsertItem({ data: [], name: 'testItem' });
-        tinyNgStore.InsertItem({ data: [], name: 'testItem' });
-        expect(tinyNgStore.InsertItem).toHaveBeenCalled();
-        expect(typeof item).toBe(typeof blankObservable);
-    });
-
     it('Contains InsertItem method', () => {
         expect(tinyNgStore.InsertItem).toBeTruthy();
         let item: Observable<StoreItem> = tinyNgStore.InsertItem({ data: [], name: 'testItem' });
