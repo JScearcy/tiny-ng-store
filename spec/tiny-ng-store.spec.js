@@ -7,18 +7,27 @@ var Observable_1 = require('rxjs/Observable');
 var Subject_1 = require('rxjs/Subject');
 testing_1.describe('tiny-ng-store', function () {
     var tinyNgStore;
+    var blankObservable;
     testing_1.beforeEachProviders(function () { return [tiny_ng_store_1.TinyNgStore]; });
     testing_1.beforeEach(testing_1.inject([tiny_ng_store_1.TinyNgStore], function (_tinyNgStore) {
         tinyNgStore = _tinyNgStore;
+        blankObservable = new Observable_1.Observable();
     }));
     testing_1.it('Creates internal state', function () {
         testing_1.expect(typeof tinyNgStore["state"]).toBe(typeof new Observable_1.Observable());
         testing_1.expect(typeof tinyNgStore["dispatcher"]).toBe(typeof new Subject_1.Subject());
     });
+    testing_1.it('Does not fail on two inserts of the same item', function () {
+        spyOn(tinyNgStore, 'InsertItem');
+        var item = tinyNgStore.InsertItem({ data: [], name: 'testItem' });
+        tinyNgStore.InsertItem({ data: [], name: 'testItem' });
+        testing_1.expect(tinyNgStore.InsertItem).toHaveBeenCalled();
+        testing_1.expect(typeof item).toBe(typeof blankObservable);
+    });
     testing_1.it('Contains InsertItem method', function () {
         testing_1.expect(tinyNgStore.InsertItem).toBeTruthy();
         var item = tinyNgStore.InsertItem({ data: [], name: 'testItem' });
-        testing_1.expect(typeof item).toBe(typeof new Observable_1.Observable());
+        testing_1.expect(typeof item).toBe(typeof blankObservable);
     });
     testing_1.it('Contains UpdateItem method', function () {
         var item = { data: ['new item'], name: 'testItem' };
@@ -29,7 +38,7 @@ testing_1.describe('tiny-ng-store', function () {
         testing_1.expect(tinyNgStore.GetItem).toBeTruthy();
         var item = tinyNgStore.GetItem('testItem');
         testing_1.expect(item).toBeTruthy();
-        testing_1.expect(typeof item).toBe(typeof new Observable_1.Observable());
+        testing_1.expect(typeof item).toBe(typeof blankObservable);
     });
     testing_1.it('Contains DeleteItem method', function () {
         var itemName = 'testItem';
