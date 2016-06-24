@@ -17,7 +17,8 @@ module.exports = function(config) {
             {pattern: 'node_modules/rxjs/**/*.js', included: false, watched: true},
             {pattern: 'spec/tiny-ng-store.spec.js', included: false, watched: true},
 
-            {pattern: 'tiny-ng-store.ts', included: false, watched: false}
+            {pattern: 'tiny-ng-store.ts', included: false, watched: false},
+            {pattern: 'tiny-ng-store.js.map', included: false, watched: false}
         ],
  
         port: 9876,
