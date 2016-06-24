@@ -1,0 +1,272 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Code coverage report for tinyngstore/karma-test-shim.js</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="../prettify.css" />
+    <link rel="stylesheet" href="../base.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style type='text/css'>
+        .coverage-summary .sorter {
+            background-image: url(../sort-arrow-sprite.png);
+        }
+    </style>
+</head>
+<body>
+<div class='wrapper'>
+  <div class='pad1'>
+    <h1>
+      <a href="../index.html">all files</a> / <a href="index.html">tinyngstore/</a> karma-test-shim.js
+    </h1>
+    <div class='clearfix'>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">50% </span>
+        <span class="quiet">Statements</span>
+        <span class='fraction'>10/20</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">0% </span>
+        <span class="quiet">Branches</span>
+        <span class='fraction'>0/2</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">25% </span>
+        <span class="quiet">Functions</span>
+        <span class='fraction'>2/8</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">52.63% </span>
+        <span class="quiet">Lines</span>
+        <span class='fraction'>10/19</span>
+      </div>
+    </div>
+  </div>
+  <div class='status-line medium'></div>
+<pre><table class="coverage">
+<tr><td class="line-count quiet">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70</td><td class="line-coverage quiet"><span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">Error.stackTraceLimit = Infinity;
+ 
+jasmine.DEFAULT_TIMEOUT_INTERVAL = 1000;
+ 
+// // Cancel Karma's synchronous start,
+// // we will call `__karma__.start()` later, once all the specs are loaded.
+__karma__.loaded = function() {};
+ 
+// System.config({
+//     packages: {
+//         'base/dist': {
+//             defaultExtension: false,
+//             format: 'cjs',
+//             map: Object.keys(window.__karma__.files).filter(onlyAppFiles).reduce(createPathRecords, {})
+//         }
+//     }
+// });
+ 
+// System.import('angular2/src/platform/browser/browser_adapter')
+//     .then(function(browser_adapter) { browser_adapter.BrowserDomAdapter.makeCurrent(); })
+//     .then(function() { return Promise.all(resolveTestFiles()); })
+//     .then(function() { __karma__.start(); }, function(error) { __karma__.error(error.stack || error); });
+&nbsp;
+ System.config({
+                map: {
+                    'tiny-ng-store': 'base/',
+                    '@angular': 'base/node_modules/@angular',
+                    'rxjs': 'base/node_modules/rxjs'
+                },
+                packages: {
+                    'spec': { defaultExtension: 'js' },
+                    '@angular/core': { main: 'index.js', defaultExtension: 'js' },
+                    'rxjs': { defaultExtension: 'js' },
+                    'tiny-ng-store': {defaultExtension: 'js'}
+                }
+            });
+&nbsp;
+System.import('base/spec/tiny-ng-store.spec.js')
+    //.then(window.onload)
+    .then(function() { __karma__.start(); }, <span class="fstat-no" title="function not covered" >function(error) {</span> <span class="cstat-no" title="statement not covered" >__karma__.error(error.stack || error); </span>})
+    .catch(console.error.bind(console));
+ 
+<span class="fstat-no" title="function not covered" >function createPathRecords(pathsMapping, appPath) {</span>
+    // creates local module name mapping to global path with karma's fingerprint in path, e.g.:
+    // './vg-player/vg-player':
+    // '/base/dist/vg-player/vg-player.js?f4523daf879cfb7310ef6242682ccf10b2041b3e'
+<span class="cstat-no" title="statement not covered" >    var pathParts = appPath.split('/');</span>
+<span class="cstat-no" title="statement not covered" >    var moduleName = './' + pathParts.slice(Math.max(pathParts.length - 2, 1)).join('/');</span>
+<span class="cstat-no" title="statement not covered" >    moduleName = moduleName.replace(/\.js$/, '');</span>
+<span class="cstat-no" title="statement not covered" >    pathsMapping[moduleName] = appPath + '?' + window.__karma__.files[appPath];</span>
+<span class="cstat-no" title="statement not covered" >    return pathsMapping;</span>
+}
+ 
+<span class="fstat-no" title="function not covered" >function onlyAppFiles(filePath) {</span>
+<span class="cstat-no" title="statement not covered" >    return /\.\/(?!.*\.spec\.js$).*\.js$/.test(filePath);</span>
+}
+ 
+<span class="fstat-no" title="function not covered" >function onlySpecFiles(path) {</span>
+<span class="cstat-no" title="statement not covered" >    return /\.\/spec\.js$/.test(path);</span>
+}
+ 
+<span class="fstat-no" title="function not covered" >function resolveTestFiles() {</span>
+<span class="cstat-no" title="statement not covered" >    return Object.keys(window.__karma__.files)  // All files served by Karma.</span>
+        .filter(onlySpecFiles)
+        .map(<span class="fstat-no" title="function not covered" >function(moduleName) {</span>
+            // loads all spec files via their global module names (e.g.
+            // 'base/dist/vg-player/vg-player.spec')
+<span class="cstat-no" title="statement not covered" >            return System.import(moduleName);</span>
+        });
+}</pre></td></tr>
+</table></pre>
+<div class='push'></div><!-- for sticky footer -->
+</div><!-- /wrapper -->
+<div class='footer quiet pad2 space-top1 center small'>
+  Code coverage
+  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Thu Jun 23 2016 19:27:59 GMT-0500 (CDT)
+</div>
+</div>
+<script src="../prettify.js"></script>
+<script>
+window.onload = function () {
+        if (typeof prettyPrint === 'function') {
+            prettyPrint();
+        }
+};
+</script>
+<script src="../sorter.js"></script>
+</body>
+</html>
