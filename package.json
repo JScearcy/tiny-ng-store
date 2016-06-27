@@ -1,13 +1,14 @@
 {
   "name": "tiny-ng-store",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Tiny RxJS store for @angular",
-  "main": "tiny-ng-store.js",
+  "main": "tiny-ng-store.umd.js",
   "scripts": {
     "test": "karma start karma.conf.js",
-    "build": "tsc && gulp",
+    "build": "tsc -m umd && gulp umd && tsc && gulp",
     "build-test": "tsc ./spec/tiny-ng-store.spec.ts"
   },
+  "bugs": "https://github.com/JScearcy/tiny-ng-store/issues",
   "keywords": [
     "Angular2",
     "RxJS",
