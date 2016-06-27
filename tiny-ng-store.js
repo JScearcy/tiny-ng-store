@@ -67,7 +67,7 @@ var TinyNgStore = (function () {
                         return state.concat([action.storeItem]);
                     }
                     else {
-                        return _this.dispatcher.next(new UpdateItem(action.storeItem));
+                        _this.dispatcher.next(new UpdateItem(action.storeItem));
                     }
                     ;
                 case RemoveItem:

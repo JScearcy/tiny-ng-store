@@ -62,10 +62,10 @@ export class TinyNgStore {
             switch (action.constructor) {
                 case AddItem:
                     let exists: StoreItem[] = state.filter((s: StoreItem) => action.storeItem.name === s.name);
-                    if (exists.length <= 0) { 
+                    if (exists.length <= 0) {
                         return [...state, action.storeItem];
                     } else {
-                        return this.dispatcher.next(new UpdateItem(action.storeItem));
+                        this.dispatcher.next(new UpdateItem(action.storeItem));
                     };
                 case RemoveItem:
                     return state.filter((s: StoreItem) => s.name !== action.storeItem.name);

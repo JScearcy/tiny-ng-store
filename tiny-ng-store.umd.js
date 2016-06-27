@@ -75,7 +75,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
                             return state.concat([action.storeItem]);
                         }
                         else {
-                            return _this.dispatcher.next(new UpdateItem(action.storeItem));
+                            _this.dispatcher.next(new UpdateItem(action.storeItem));
                         }
                         ;
                     case RemoveItem:
