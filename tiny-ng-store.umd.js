@@ -70,12 +70,12 @@ var __metadata = (this && this.__metadata) || function (k, v) {
                 state = state || [];
                 switch (action.constructor) {
                     case AddItem:
-                        var exists = state.filter(function (s) { return action.storeItem.name === s.name; });
-                        if (exists.length <= 0) {
+                        var exists = state.find(function (s) { return action.storeItem.name === s.name; });
+                        if (!exists) {
                             return state.concat([action.storeItem]);
                         }
                         else {
-                            _this.dispatcher.next(new UpdateItem(action.storeItem));
+                            return state.map(function (s) { return s.name !== action.storeItem.name ? s : _this.updateItem(action.storeItem); });
                         }
                         ;
                     case RemoveItem:

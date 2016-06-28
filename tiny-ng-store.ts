@@ -61,11 +61,11 @@ export class TinyNgStore {
             state = state || [];
             switch (action.constructor) {
                 case AddItem:
-                    let exists: StoreItem[] = state.filter((s: StoreItem) => action.storeItem.name === s.name);
-                    if (exists.length <= 0) {
+                    let exists: StoreItem = state.find((s: StoreItem) => action.storeItem.name === s.name);
+                    if (!exists) {
                         return [...state, action.storeItem];
                     } else {
-                        this.dispatcher.next(new UpdateItem(action.storeItem));
+                        return state.map((s: StoreItem) => s.name !== action.storeItem.name ? s : this.updateItem(action.storeItem));
                     };
                 case RemoveItem:
                     return state.filter((s: StoreItem) => s.name !== action.storeItem.name);
@@ -80,6 +80,7 @@ export class TinyNgStore {
     private updateItem(item: StoreItem): StoreItem {
         let updatedItem: any = {};
         Object.keys(item).map((key: string) => updatedItem[key] = item[key]);
+
         return updatedItem;
     }
 }
