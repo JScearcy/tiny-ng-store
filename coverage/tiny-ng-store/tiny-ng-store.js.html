@@ -20,24 +20,24 @@
     </h1>
     <div class='clearfix'>
       <div class='fl pad1y space-right2'>
-        <span class="strong">94.2% </span>
+        <span class="strong">94.59% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>65/69</span>
+        <span class='fraction'>70/74</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">47.06% </span>
+        <span class="strong">53.85% </span>
         <span class="quiet">Branches</span>
-        <span class='fraction'>16/34</span>
+        <span class='fraction'>21/39</span>
       </div>
       <div class='fl pad1y space-right2'>
         <span class="strong">100% </span>
         <span class="quiet">Functions</span>
-        <span class='fraction'>25/25</span>
+        <span class='fraction'>26/26</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">96.61% </span>
+        <span class="strong">96.88% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>57/59</span>
+        <span class='fraction'>62/64</span>
       </div>
     </div>
   </div>
@@ -132,11 +132,22 @@
 87
 88
 89
-90</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+90
+91
+92
+93
+94
+95
+96
+97
+98</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1×</span>
@@ -211,11 +222,16 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">3×</span>
+<span class="cline-any cline-yes">3×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-yes">2×</span>
 <span class="cline-any cline-yes">4×</span>
 <span class="cline-any cline-yes">2×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1×</span>
@@ -227,6 +243,9 @@ var __decorate = (this &amp;&amp; this.__decorate) || function (decorators, targ
     <span class="missing-if-branch" title="else path not taken" >E</span>if (typeof Reflect === "object" &amp;&amp; typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else <span class="cstat-no" title="statement not covered" >for (var i = decorators.length - 1; i &gt;= 0; i--) <span class="cstat-no" title="statement not covered" >if (d = decorators[i]) <span class="cstat-no" title="statement not covered" >r = (c &lt; 3 ? d(r) : c &gt; 3 ? d(target, key, r) : d(target, key)) || r;</span></span></span>
     return c &gt; 3 &amp;&amp; <span class="branch-1 cbranch-no" title="branch not covered" >r </span>&amp;&amp; <span class="branch-2 cbranch-no" title="branch not covered" >Object.defineProperty(target, key, r),</span> r;
+};
+var __metadata = (this &amp;&amp; this.__metadata) || function (k, v) {
+    <span class="missing-if-branch" title="else path not taken" >E</span>if (typeof Reflect === "object" &amp;&amp; typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
 var Subject_1 = require('rxjs/Subject');
@@ -287,17 +306,21 @@ var TinyNgStore = (function () {
                         return state.concat([action.storeItem]);
                     }
                     else {
-                        return state.map(function (s) { return s.name !== action.storeItem.name ? <span class="branch-0 cbranch-no" title="branch not covered" >s </span>: _this.updateItem(action.storeItem); });
+                        return _this.updateStoreItems(state, action.storeItem);
                     }
                     ;
                 case RemoveItem:
                     return state.filter(function (s) { return s.name !== action.storeItem.name; });
                 case UpdateItem:
-                    return state.map(function (s) { return s.name !== action.storeItem.name ? <span class="branch-0 cbranch-no" title="branch not covered" >s </span>: _this.updateItem(action.storeItem); });
+                    return _this.updateStoreItems(state, action.storeItem);
 <span class="branch-3 cbranch-no" title="branch not covered" >                default:</span>
 <span class="cstat-no" title="statement not covered" >                    return state;</span>
             }
         }, initState);
+    };
+    TinyNgStore.prototype.updateStoreItems = function (state, item) {
+        var _this = this;
+        return state.map(function (s) { return s.name !== item.name ? <span class="branch-0 cbranch-no" title="branch not covered" >s </span>: _this.updateItem(item); });
     };
     TinyNgStore.prototype.updateItem = function (item) {
         var updatedItem = {};
@@ -305,7 +328,8 @@ var TinyNgStore = (function () {
         return updatedItem;
     };
     TinyNgStore = __decorate([
-        core_1.Injectable()
+        core_1.Injectable(), 
+        __metadata('design:paramtypes', [])
     ], TinyNgStore);
     return TinyNgStore;
 }());
@@ -316,7 +340,7 @@ exports.TinyNgStore = TinyNgStore;
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Tue Jun 28 2016 13:08:56 GMT-0500 (Central Daylight Time)
+  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Tue Jun 28 2016 15:32:19 GMT-0500 (Central Daylight Time)
 </div>
 </div>
 <script src="../prettify.js"></script>

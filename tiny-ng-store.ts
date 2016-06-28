@@ -65,16 +65,20 @@ export class TinyNgStore {
                     if (!exists) {
                         return [...state, action.storeItem];
                     } else {
-                        return state.map((s: StoreItem) => s.name !== action.storeItem.name ? s : this.updateItem(action.storeItem));
+                        return this.updateStoreItems(state, action.storeItem);
                     };
                 case RemoveItem:
                     return state.filter((s: StoreItem) => s.name !== action.storeItem.name);
                 case UpdateItem:
-                    return state.map((s: StoreItem) => s.name !== action.storeItem.name ? s : this.updateItem(action.storeItem));
+                    return this.updateStoreItems(state, action.storeItem);
                 default:
                     return state;
             }
         }, initState);
+    }
+
+    private updateStoreItems(state: StoreItem[], item: StoreItem): StoreItem[] {
+        return state.map((s: StoreItem) => s.name !== item.name ? s : this.updateItem(item));
     }
 
     private updateItem(item: StoreItem): StoreItem {

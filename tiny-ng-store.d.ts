@@ -15,5 +15,6 @@ export declare class TinyNgStore {
     GetItem(name: string): Observable<StoreItem>;
     private storeInit(initState, actions);
     private store(initState, actions);
+    private updateStoreItems(state, item);
     private updateItem(item);
 }
