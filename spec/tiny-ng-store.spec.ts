@@ -16,6 +16,7 @@ describe('tiny-ng-store', () => {
     beforeEach(inject([TinyNgStore], (_tinyNgStore: TinyNgStore): void => {
         tinyNgStore = _tinyNgStore;
         blankObservable = new Observable<StoreItem>();
+        tinyNgStore.InsertItem({ data: [], name: 'beforeEachInsert'});
     }));
     it('Creates internal state', () => {
         expect(typeof tinyNgStore["state"]).toBe(typeof new Observable<StoreItem[]>());
@@ -88,8 +89,16 @@ describe('tiny-ng-store', () => {
         let itemName: string = 'testItem';
         tinyNgStore.InsertItem({ data: ['initData'], name: itemName })
             .subscribe((s: StoreItem) => s ? data = s.data : data = []);
-        tinyNgStore.DeleteItem(itemName)
+        tinyNgStore.DeleteItem(itemName);
         expect(data.length).toBe(0);
     });
 
+    it('Returns current state if action object not constructed properly', () => {
+        let item: Observable<StoreItem> = tinyNgStore.GetItem('incorrectly created');
+        let event: any = { storeItem: {data: [], name: 'incorrectly created'} };
+        let data: StoreItem;
+        tinyNgStore['dispatcher'].next(event);
+        item.take(1).subscribe((s: StoreItem) => data = s);
+        expect(data).toBe(undefined);
+    });
 });

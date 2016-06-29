@@ -58,7 +58,6 @@ export class TinyNgStore {
 
     private store(initState: StoreItem[], actions: Observable<StoreAction>): Observable<StoreItem[]> {
         return actions.scan((state: StoreItem[], action: StoreAction) => {
-            state = state || [];
             switch (action.constructor) {
                 case AddItem:
                     let exists: StoreItem = state.find((s: StoreItem) => action.storeItem.name === s.name);

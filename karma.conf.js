@@ -10,7 +10,7 @@ module.exports = function(config) {
             {pattern: 'node_modules/zone.js/dist/zone.js', included: true, watched: true},
             {pattern: 'node_modules/reflect-metadata/Reflect.js', included: true, watched: true},
             {pattern: 'node_modules/rxjs/bundles/Rx.js', included: true, watched: true},
-            {pattern: 'karma-test-shim.js', included: true, watched: true},
+            {pattern: 'karma-test-shim.js', included: true, watched: false},
  
             {pattern: 'tiny-ng-store.js', included: false, watched: true},
             {pattern: 'node_modules/@angular/core/**/*.js', included: false, watched: true},
@@ -40,7 +40,7 @@ module.exports = function(config) {
         reporters: ['progress', 'dots', 'coverage'],
  
         preprocessors: {
-            '!(*spec).js': ['coverage']
+            'tiny-ng-store.js': ['coverage']
         },
  
         coverageReporter: {

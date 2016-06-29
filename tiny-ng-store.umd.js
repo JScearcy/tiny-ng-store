@@ -67,7 +67,6 @@ var __metadata = (this && this.__metadata) || function (k, v) {
         TinyNgStore.prototype.store = function (initState, actions) {
             var _this = this;
             return actions.scan(function (state, action) {
-                state = state || [];
                 switch (action.constructor) {
                     case AddItem:
                         var exists = state.find(function (s) { return action.storeItem.name === s.name; });

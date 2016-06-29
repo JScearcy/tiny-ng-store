@@ -13,6 +13,7 @@ testing_1.describe('tiny-ng-store', function () {
     testing_1.beforeEach(testing_1.inject([tiny_ng_store_1.TinyNgStore], function (_tinyNgStore) {
         tinyNgStore = _tinyNgStore;
         blankObservable = new Observable_1.Observable();
+        tinyNgStore.InsertItem({ data: [], name: 'beforeEachInsert' });
     }));
     testing_1.it('Creates internal state', function () {
         testing_1.expect(typeof tinyNgStore["state"]).toBe(typeof new Observable_1.Observable());
@@ -78,5 +79,13 @@ testing_1.describe('tiny-ng-store', function () {
             .subscribe(function (s) { return s ? data = s.data : data = []; });
         tinyNgStore.DeleteItem(itemName);
         testing_1.expect(data.length).toBe(0);
+    });
+    testing_1.it('Returns current state if action object not constructed properly', function () {
+        var item = tinyNgStore.GetItem('incorrectly created');
+        var event = { storeItem: { data: [], name: 'incorrectly created' } };
+        var data;
+        tinyNgStore['dispatcher'].next(event);
+        item.take(1).subscribe(function (s) { return data = s; });
+        testing_1.expect(data).toBe(undefined);
     });
 });
