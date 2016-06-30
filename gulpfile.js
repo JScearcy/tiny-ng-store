@@ -18,10 +18,10 @@ gulp.task('umd', ['umd-rename'], function() {
         .pipe(concat('tiny-ng-store.umd.min.js'))
         .pipe(uglify())
         .pipe(gulp.dest('./'));
-})
+});
 
 gulp.task('umd-rename', [], function() {
     return gulp.src(['./tiny-ng-store.js'])
         .pipe(concat('tiny-ng-store.umd.js'))
         .pipe(gulp.dest('./'));
-})
+});

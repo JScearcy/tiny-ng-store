@@ -55,9 +55,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
             this.dispatcher.next(new UpdateItem(storeItem));
         };
         TinyNgStore.prototype.GetItem = function (name) {
-            return this.state.map(function (s) {
-                return s.find(function (si) { return si.name === name; });
-            });
+            return this.state.map(function (s) { return s.find(function (si) { return si.name === name; }); });
         };
         TinyNgStore.prototype.storeInit = function (initState, actions) {
             var behavior = new BehaviorSubject_1.BehaviorSubject(initState);

@@ -44,9 +44,7 @@ export class TinyNgStore {
     }
 
     public GetItem(name: string): Observable<StoreItem> {
-        return this.state.map((s: StoreItem[]) => {
-            return s.find((si: StoreItem) => si.name === name);
-        });
+        return this.state.map((s: StoreItem[]) => s.find((si: StoreItem) => si.name === name));
     }
 
     private storeInit(initState: StoreItem[], actions: Observable<StoreAction>): Observable<StoreItem[]> {

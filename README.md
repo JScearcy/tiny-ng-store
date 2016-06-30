@@ -23,12 +23,19 @@ A tiny API and small footprint allow for a quick setup.
 
 ### Get Item
     this.storeService.GetItem('storeName')
-* Returns a StoreItem Observable 
+* Returns a StoreItem Observable - Map a function to extract data and tansform or subscribe as necessary
+    
+    this.storeService.GetItem('storeName').map((s: StoreItem) => s && s.data);
+* This will return an observable that contains either undefined (if it was never created) or the data you added to that store.
 
 ### Insert Item 
     this.storeService.InsertItem({ name: 'storeName' data: 'Any Data' });
 * Use any type of data that you want
-* Returns a StoreItem Observable
+* Returns a StoreItem Observable - Map a function to extract data and tansform or subscribe as necessary
+
+    this.storeService.InsertItem('storeName').map((s: StoreItem) => s && s.data);
+* This will return an observable that contains the data added to that store.
+
 
 ### Update Item
     this.storeService.UpdateItem({ name: 'storeName' data: 'Updated Data' });
@@ -39,10 +46,10 @@ A tiny API and small footprint allow for a quick setup.
 ### Run tests   
     npm install
     npm run tests
-* This will run live server and open the tiny-ng-store.spec.html file in browser.
+* Runs Karma test runner and creates new results is the coverage/ folder.
 
 
 #### Examples
-* A small Angular 2 app that will track the amount of searches on page load.
+* A small Angular 2 app that will track the amount of searches on page load. Including a systemjs config file.
 
     https://github.com/JScearcy/ng2-github-starter
