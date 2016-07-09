@@ -58,24 +58,16 @@ export class TinyNgStore {
         return actions.scan((state: StoreItem[], action: StoreAction) => {
             switch (action.constructor) {
                 case AddItem:
-                    let exists: StoreItem = state.find((s: StoreItem) => action.storeItem.name === s.name);
-                    if (!exists) {
-                        return [...state, action.storeItem];
-                    } else {
-                        return this.updateStoreItems(state, action.storeItem);
-                    };
+                    let filteredStore: StoreItem[] = state.filter((s: StoreItem) => action.storeItem.name !== s.name);
+                    return [...filteredStore, action.storeItem];
                 case RemoveItem:
                     return state.filter((s: StoreItem) => s.name !== action.storeItem.name);
                 case UpdateItem:
-                    return this.updateStoreItems(state, action.storeItem);
+                    return state.map((s: StoreItem) => s.name !== action.storeItem.name ? s : this.updateItem(action.storeItem));
                 default:
                     return state;
             }
         }, initState);
-    }
-
-    private updateStoreItems(state: StoreItem[], item: StoreItem): StoreItem[] {
-        return state.map((s: StoreItem) => s.name !== item.name ? s : this.updateItem(item));
     }
 
     private updateItem(item: StoreItem): StoreItem {

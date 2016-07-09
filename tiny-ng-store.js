@@ -59,26 +59,16 @@ var TinyNgStore = (function () {
         return actions.scan(function (state, action) {
             switch (action.constructor) {
                 case AddItem:
-                    var exists = state.find(function (s) { return action.storeItem.name === s.name; });
-                    if (!exists) {
-                        return state.concat([action.storeItem]);
-                    }
-                    else {
-                        return _this.updateStoreItems(state, action.storeItem);
-                    }
-                    ;
+                    var filteredStore = state.filter(function (s) { return action.storeItem.name !== s.name; });
+                    return filteredStore.concat([action.storeItem]);
                 case RemoveItem:
                     return state.filter(function (s) { return s.name !== action.storeItem.name; });
                 case UpdateItem:
-                    return _this.updateStoreItems(state, action.storeItem);
+                    return state.map(function (s) { return s.name !== action.storeItem.name ? s : _this.updateItem(action.storeItem); });
                 default:
                     return state;
             }
         }, initState);
-    };
-    TinyNgStore.prototype.updateStoreItems = function (state, item) {
-        var _this = this;
-        return state.map(function (s) { return s.name !== item.name ? s : _this.updateItem(item); });
     };
     TinyNgStore.prototype.updateItem = function (item) {
         var updatedItem = {};
