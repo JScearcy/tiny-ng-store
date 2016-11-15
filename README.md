@@ -59,4 +59,4 @@ A tiny API and small footprint allow for a quick setup.
 #### Examples
 * A collection of small examples for various Angular 2 items
 
-    https://github.com/JScearcy/ng2-github-starter
+    https://github.com/JScearcy/angular-2-examples
