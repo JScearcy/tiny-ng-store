@@ -21,8 +21,10 @@
     "url": "git+https://github.com/JScearcy/tiny-ng-store.git"
   },
   "dependencies": {
-    "@angular/core": "^2.0.0",
-    "rxjs": "^5.0.0-beta.12"
+    "@angular/core": "^2.0.0"
+  },
+  "peerDependencies": {
+    "rxjs": "^5.0.0-beta.12"    
   },
   "devDependencies": {
     "better-spawn": "^0.3.1",
