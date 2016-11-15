@@ -12,7 +12,7 @@ __karma__.loaded = function() {};
                 },
                 packages: {
                     'spec': { defaultExtension: 'js' },
-                    '@angular/core': { main: 'index.js', defaultExtension: 'js' },
+                    '@angular/core': { main: 'bundles/core.umd.js', defaultExtension: 'js' },
                     'rxjs': { defaultExtension: 'js' },
                     'tiny-ng-store': {defaultExtension: 'js'}
                 }

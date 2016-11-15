@@ -12,7 +12,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
         var v = factory(require, exports); if (v !== undefined) module.exports = v;
     }
     else if (typeof define === 'function' && define.amd) {
-        define(["require", "exports", '@angular/core', 'rxjs/Subject', 'rxjs/BehaviorSubject', 'rxjs/add/operator/scan', 'rxjs/add/operator/map'], factory);
+        define(["require", "exports", '@angular/core', 'rxjs/Subject', 'rxjs/BehaviorSubject', 'rxjs/add/operator/scan', 'rxjs/add/operator/map', 'rxjs/add/operator/take'], factory);
     }
 })(function (require, exports) {
     "use strict";
@@ -21,6 +21,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     var BehaviorSubject_1 = require('rxjs/BehaviorSubject');
     require('rxjs/add/operator/scan');
     require('rxjs/add/operator/map');
+    require('rxjs/add/operator/take');
     var AddItem = (function () {
         function AddItem(storeItem) {
             this.storeItem = storeItem;
@@ -76,7 +77,9 @@ var __metadata = (this && this.__metadata) || function (k, v) {
                     default:
                         return state;
                 }
+                /* tslint:disable */
             }, initState);
+            /* tslint:enable */
         };
         TinyNgStore.prototype.updateItem = function (item) {
             var updatedItem = {};

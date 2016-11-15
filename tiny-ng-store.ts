@@ -1,9 +1,14 @@
-import {Injectable} from '@angular/core';
-import {Observable} from 'rxjs/Observable';
-import {Subject} from 'rxjs/Subject';
-import {BehaviorSubject} from 'rxjs/BehaviorSubject';
+import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs/Observable';
+import { Subject } from 'rxjs/Subject';
+import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import 'rxjs/add/operator/scan';
 import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/take';
+
+export interface TnsObservable<T> extends Observable<T> {
+
+}
 
 export interface StoreItem {
     name: string;
@@ -19,18 +24,17 @@ type StoreAction
     | RemoveItem
     | UpdateItem
 
-
 @Injectable()
 export class TinyNgStore {
     private dispatcher: Subject<StoreAction>;
-    private state: Observable<StoreItem[]>;
+    private state: TnsObservable<StoreItem[]>;
 
     constructor() {
         this.dispatcher = new Subject<StoreAction>();
         this.state = this.storeInit([], this.dispatcher);
     }
 
-    public InsertItem(storeItem: StoreItem): Observable<StoreItem> {
+    public InsertItem(storeItem: StoreItem): TnsObservable<StoreItem> {
         this.dispatcher.next(new AddItem(storeItem));
         return this.GetItem(storeItem.name);
     }
@@ -43,18 +47,18 @@ export class TinyNgStore {
         this.dispatcher.next(new UpdateItem(storeItem));
     }
 
-    public GetItem(name: string): Observable<StoreItem> {
+    public GetItem(name: string): TnsObservable<StoreItem> {
         return this.state.map((s: StoreItem[]) => s.find((si: StoreItem) => si.name === name));
     }
 
-    private storeInit(initState: StoreItem[], actions: Observable<StoreAction>): Observable<StoreItem[]> {
+    private storeInit(initState: StoreItem[], actions: TnsObservable<StoreAction>): TnsObservable<StoreItem[]> {
         const behavior: BehaviorSubject<StoreItem[]> = new BehaviorSubject(initState);
         this.store(initState, actions).subscribe((s: any) => behavior.next(s));
 
         return behavior;
     }
 
-    private store(initState: StoreItem[], actions: Observable<StoreAction>): Observable<StoreItem[]> {
+    private store(initState: StoreItem[], actions: TnsObservable<StoreAction>): TnsObservable<StoreItem[]> {
         return actions.scan((state: StoreItem[], action: StoreAction) => {
             switch (action.constructor) {
                 case AddItem:
@@ -67,7 +71,9 @@ export class TinyNgStore {
                 default:
                     return state;
             }
+        /* tslint:disable */
         }, initState);
+        /* tslint:enable */
     }
 
     private updateItem(item: StoreItem): StoreItem {

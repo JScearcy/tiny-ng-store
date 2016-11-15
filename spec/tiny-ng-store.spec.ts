@@ -1,7 +1,7 @@
 /// <reference path="../typings/browser.d.ts" />
 /// <reference path="../typings/main/ambient/jasmine/jasmine.d.ts" />
 
-import {beforeEachProviders, beforeEach, describe, expect, it, inject} from '@angular/core/testing';
+// import {beforeEachProviders, beforeEach, expect, it, inject} from '@angular/core/testing';
 import {TinyNgStore, StoreItem} from '../tiny-ng-store';
 import {Observable} from 'rxjs/Observable';
 import {Subject} from 'rxjs/Subject';
@@ -11,13 +11,12 @@ describe('tiny-ng-store', () => {
     let tinyNgStore: TinyNgStore;
     let blankObservable: Observable<StoreItem>;
 
-    beforeEachProviders(() => [TinyNgStore]);
-
-    beforeEach(inject([TinyNgStore], (_tinyNgStore: TinyNgStore): void => {
-        tinyNgStore = _tinyNgStore;
+    beforeEach((): void => {
+        tinyNgStore = new TinyNgStore();
         blankObservable = new Observable<StoreItem>();
         tinyNgStore.InsertItem({ data: [], name: 'beforeEachInsert'});
-    }));
+    });
+
     it('Creates internal state', () => {
         expect(typeof tinyNgStore["state"]).toBe(typeof new Observable<StoreItem[]>());
         expect(typeof tinyNgStore["dispatcher"]).toBe(typeof new Subject<any>());

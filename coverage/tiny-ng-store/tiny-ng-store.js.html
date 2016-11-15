@@ -20,24 +20,24 @@
     </h1>
     <div class='clearfix'>
       <div class='fl pad1y space-right2'>
-        <span class="strong">95.89% </span>
+        <span class="strong">95.45% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>70/73</span>
+        <span class='fraction'>63/66</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">59.46% </span>
+        <span class="strong">50% </span>
         <span class="quiet">Branches</span>
-        <span class='fraction'>22/37</span>
+        <span class='fraction'>14/28</span>
       </div>
       <div class='fl pad1y space-right2'>
         <span class="strong">100% </span>
         <span class="quiet">Functions</span>
-        <span class='fraction'>26/26</span>
+        <span class='fraction'>24/24</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">98.39% </span>
+        <span class="strong">98.21% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>61/62</span>
+        <span class='fraction'>55/56</span>
       </div>
     </div>
   </div>
@@ -126,18 +126,7 @@
 81
 82
 83
-84
-85
-86
-87
-88
-89
-90
-91
-92
-93
-94
-95</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+84</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-yes">1×</span>
@@ -145,8 +134,6 @@
 <span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1×</span>
-<span class="cline-any cline-yes">1×</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-yes">1×</span>
@@ -200,32 +187,23 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">18×</span>
 <span class="cline-any cline-yes">18×</span>
-<span class="cline-any cline-yes">17×</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1×</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">3×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">2×</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1×</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-yes">3×</span>
-<span class="cline-any cline-yes">5×</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1×</span>
-<span class="cline-any cline-yes">2×</span>
-<span class="cline-any cline-yes">4×</span>
-<span class="cline-any cline-yes">2×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1×</span>
@@ -238,14 +216,12 @@ var __decorate = (this &amp;&amp; this.__decorate) || function (decorators, targ
     else <span class="cstat-no" title="statement not covered" >for (var i = decorators.length - 1; i &gt;= 0; i--) <span class="cstat-no" title="statement not covered" >if (d = decorators[i]) <span class="cstat-no" title="statement not covered" >r = (c &lt; 3 ? d(r) : c &gt; 3 ? d(target, key, r) : d(target, key)) || r;</span></span></span>
     return c &gt; 3 &amp;&amp; <span class="branch-1 cbranch-no" title="branch not covered" >r </span>&amp;&amp; <span class="branch-2 cbranch-no" title="branch not covered" >Object.defineProperty(target, key, r),</span> r;
 };
-var __metadata = (this &amp;&amp; this.__metadata) || function (k, v) {
-    <span class="missing-if-branch" title="else path not taken" >E</span>if (typeof Reflect === "object" &amp;&amp; typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
 var core_1 = require('@angular/core');
 var Subject_1 = require('rxjs/Subject');
 var BehaviorSubject_1 = require('rxjs/BehaviorSubject');
 require('rxjs/add/operator/scan');
 require('rxjs/add/operator/map');
+require('rxjs/add/operator/take');
 var AddItem = (function () {
     function AddItem(storeItem) {
         this.storeItem = storeItem;
@@ -292,26 +268,18 @@ var TinyNgStore = (function () {
         return actions.scan(function (state, action) {
             switch (action.constructor) {
                 case AddItem:
-                    var exists = state.find(function (s) { return action.storeItem.name === s.name; });
-                    if (!exists) {
-                        return state.concat([action.storeItem]);
-                    }
-                    else {
-                        return _this.updateStoreItems(state, action.storeItem);
-                    }
-                    ;
+                    var filteredStore = state.filter(function (s) { return action.storeItem.name !== s.name; });
+                    return filteredStore.concat([action.storeItem]);
                 case RemoveItem:
                     return state.filter(function (s) { return s.name !== action.storeItem.name; });
                 case UpdateItem:
-                    return _this.updateStoreItems(state, action.storeItem);
+                    return state.map(function (s) { return s.name !== action.storeItem.name ? s : _this.updateItem(action.storeItem); });
                 default:
                     return state;
             }
+            /* tslint:disable */
         }, initState);
-    };
-    TinyNgStore.prototype.updateStoreItems = function (state, item) {
-        var _this = this;
-        return state.map(function (s) { return s.name !== item.name ? s : _this.updateItem(item); });
+        /* tslint:enable */
     };
     TinyNgStore.prototype.updateItem = function (item) {
         var updatedItem = {};
@@ -319,8 +287,7 @@ var TinyNgStore = (function () {
         return updatedItem;
     };
     TinyNgStore = __decorate([
-        core_1.Injectable(), 
-        __metadata('design:paramtypes', [])
+        core_1.Injectable()
     ], TinyNgStore);
     return TinyNgStore;
 }());
@@ -331,7 +298,7 @@ exports.TinyNgStore = TinyNgStore;
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Thu Jun 30 2016 13:50:44 GMT-0500 (Central Daylight Time)
+  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Tue Nov 15 2016 12:33:12 GMT-0600 (Central Standard Time)
 </div>
 </div>
 <script src="../prettify.js"></script>
