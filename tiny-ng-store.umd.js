@@ -12,7 +12,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
         var v = factory(require, exports); if (v !== undefined) module.exports = v;
     }
     else if (typeof define === 'function' && define.amd) {
-        define(["require", "exports", '@angular/core', 'rxjs/Subject', 'rxjs/BehaviorSubject', 'rxjs/add/operator/scan', 'rxjs/add/operator/map', 'rxjs/add/operator/take'], factory);
+        define(["require", "exports", '@angular/core', 'rxjs/Subject', 'rxjs/BehaviorSubject', 'rxjs/add/operator/scan', 'rxjs/add/operator/map', 'rxjs/add/operator/take', 'rxjs/add/operator/distinctUntilChanged'], factory);
     }
 })(function (require, exports) {
     "use strict";
@@ -22,6 +22,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     require('rxjs/add/operator/scan');
     require('rxjs/add/operator/map');
     require('rxjs/add/operator/take');
+    require('rxjs/add/operator/distinctUntilChanged');
     var AddItem = (function () {
         function AddItem(storeItem) {
             this.storeItem = storeItem;
@@ -56,7 +57,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
             this.dispatcher.next(new UpdateItem(storeItem));
         };
         TinyNgStore.prototype.GetItem = function (name) {
-            return this.state.map(function (s) { return s.find(function (si) { return si.name === name; }); });
+            return this.state.map(function (s) { return s.find(function (si) { return si.name === name; }); }).distinctUntilChanged();
         };
         TinyNgStore.prototype.storeInit = function (initState, actions) {
             var behavior = new BehaviorSubject_1.BehaviorSubject(initState);
