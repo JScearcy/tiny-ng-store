@@ -67,6 +67,7 @@ A tiny API and small footprint allow for a quick setup.
 #### 3.0.0
 Breaking:
 * Change TnsObservable to TnsState
+
 Non-Breaking:
 * GetItem returns TnsState that utilizes distinctUntilChanged
 * Updated dependencies
