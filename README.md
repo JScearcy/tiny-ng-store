@@ -7,7 +7,8 @@
 A flexible store for Angular 2 projects. 
 A tiny API and small footprint allow for a quick setup.
 
-
+## Docs
+* https://jscearcy.github.io/tiny-ng-store/
 
 ## Use
 
