@@ -1,3 +1,8 @@
+var __extends = (this && this.__extends) || function (d, b) {
+    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
+    function __() { this.constructor = d; }
+    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+};
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -12,17 +17,47 @@ var __metadata = (this && this.__metadata) || function (k, v) {
         var v = factory(require, exports); if (v !== undefined) module.exports = v;
     }
     else if (typeof define === 'function' && define.amd) {
-        define(["require", "exports", '@angular/core', 'rxjs/Subject', 'rxjs/BehaviorSubject', 'rxjs/add/operator/scan', 'rxjs/add/operator/map', 'rxjs/add/operator/take', 'rxjs/add/operator/distinctUntilChanged'], factory);
+        define(["require", "exports", '@angular/core', 'rxjs/Observable', 'rxjs/Subject', 'rxjs/BehaviorSubject', 'rxjs/add/operator/scan', 'rxjs/add/operator/map', 'rxjs/add/operator/take', 'rxjs/add/operator/distinctUntilChanged'], factory);
     }
 })(function (require, exports) {
     "use strict";
     var core_1 = require('@angular/core');
+    var Observable_1 = require('rxjs/Observable');
     var Subject_1 = require('rxjs/Subject');
     var BehaviorSubject_1 = require('rxjs/BehaviorSubject');
     require('rxjs/add/operator/scan');
     require('rxjs/add/operator/map');
     require('rxjs/add/operator/take');
     require('rxjs/add/operator/distinctUntilChanged');
+    /**
+     * A type of Observable<T> representing the store Observable
+     * @export
+     * @class TnsState
+     * @extends {Observable<T>}
+     * @template T
+     */
+    var TnsState = (function (_super) {
+        __extends(TnsState, _super);
+        function TnsState() {
+            _super.apply(this, arguments);
+        }
+        return TnsState;
+    }(Observable_1.Observable));
+    exports.TnsState = TnsState;
+    /**
+     * This class represents and data added into the store
+     * Name your store item, and provide data
+     * @export
+     * @class StoreItem
+     * @property {string} name - This is the name of the data stored
+     * @property {any} data - This is the data stored under the name provided
+     */
+    var StoreItem = (function () {
+        function StoreItem() {
+        }
+        return StoreItem;
+    }());
+    exports.StoreItem = StoreItem;
     var AddItem = (function () {
         function AddItem(storeItem) {
             this.storeItem = storeItem;
@@ -41,21 +76,52 @@ var __metadata = (this && this.__metadata) || function (k, v) {
         }
         return UpdateItem;
     }());
+    /**
+     * Class representing the data store
+     * Creates an instance of TinyNgStore.
+     * @export
+     * @class TinyNgStore
+     */
     var TinyNgStore = (function () {
         function TinyNgStore() {
             this.dispatcher = new Subject_1.Subject();
             this.state = this.storeInit([], this.dispatcher);
         }
+        /**
+         * Insert an item into the data store
+         * This will return TnsState<StoreItem> representing that object inserted
+         * @param {StoreItem} storeItem - StoreItem class representing your data
+         * @returns {TnsState<StoreItem>}
+         * @memberOf TinyNgStore
+         */
         TinyNgStore.prototype.InsertItem = function (storeItem) {
             this.dispatcher.next(new AddItem(storeItem));
             return this.GetItem(storeItem.name);
         };
+        /**
+         * Delete an item from the data store
+         * @param {string} name - This is the name of the data stored
+         * @memberOf TinyNgStore
+         */
         TinyNgStore.prototype.DeleteItem = function (name) {
             this.dispatcher.next(new RemoveItem({ name: name }));
         };
+        /**
+         * Update and item within the data store
+         * If the item does not exist, nothing will be created
+         * @param {StoreItem} storeItem - StoreItem class representing your data
+         * @memberOf TinyNgStore
+         */
         TinyNgStore.prototype.UpdateItem = function (storeItem) {
             this.dispatcher.next(new UpdateItem(storeItem));
         };
+        /**
+         * Retrieve an item from the data store
+         * This will return TnsState<StoreItem> representing that object
+         * @param {string} name - This is the name of the data stored
+         * @returns {TnsState<StoreItem>}
+         * @memberOf TinyNgStore
+         */
         TinyNgStore.prototype.GetItem = function (name) {
             return this.state.map(function (s) { return s.find(function (si) { return si.name === name; }); }).distinctUntilChanged();
         };

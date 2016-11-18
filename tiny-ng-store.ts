@@ -7,11 +7,26 @@ import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/take';
 import 'rxjs/add/operator/distinctUntilChanged';
 
-export interface TnsState<T> extends Observable<T> {}
+/**
+ * A type of Observable<T> representing the store Observable
+ * @export
+ * @class TnsState
+ * @extends {Observable<T>}
+ * @template T
+ */
+export class TnsState<T> extends Observable<T> {}
 
-export interface StoreItem {
-    name: string;
-    data?: any;
+/**
+ * This class represents and data added into the store
+ * Name your store item, and provide data
+ * @export
+ * @class StoreItem
+ * @property {string} name - This is the name of the data stored
+ * @property {any} data - This is the data stored under the name provided
+ */
+export class StoreItem {
+    public name: string;
+    public data?: any;
 }
 
 class AddItem { constructor(public storeItem: StoreItem) {} }
@@ -23,6 +38,12 @@ type StoreAction
     | RemoveItem
     | UpdateItem
 
+/**
+ * Class representing the data store
+ * Creates an instance of TinyNgStore.
+ * @export
+ * @class TinyNgStore
+ */
 @Injectable()
 export class TinyNgStore {
     private dispatcher: Subject<StoreAction>;
@@ -33,19 +54,44 @@ export class TinyNgStore {
         this.state = this.storeInit([], this.dispatcher);
     }
 
+    /**
+     * Insert an item into the data store
+     * This will return TnsState<StoreItem> representing that object inserted
+     * @param {StoreItem} storeItem - StoreItem class representing your data
+     * @returns {TnsState<StoreItem>}
+     * @memberOf TinyNgStore
+     */
     public InsertItem(storeItem: StoreItem): TnsState<StoreItem> {
         this.dispatcher.next(new AddItem(storeItem));
         return this.GetItem(storeItem.name);
     }
 
+    /**
+     * Delete an item from the data store
+     * @param {string} name - This is the name of the data stored
+     * @memberOf TinyNgStore
+     */
     public DeleteItem(name: string): void {
         this.dispatcher.next(new RemoveItem({ name: name }));
     }
 
+    /**
+     * Update and item within the data store
+     * If the item does not exist, nothing will be created
+     * @param {StoreItem} storeItem - StoreItem class representing your data
+     * @memberOf TinyNgStore
+     */
     public UpdateItem(storeItem: StoreItem): void {
         this.dispatcher.next(new UpdateItem(storeItem));
     }
 
+    /**
+     * Retrieve an item from the data store
+     * This will return TnsState<StoreItem> representing that object
+     * @param {string} name - This is the name of the data stored
+     * @returns {TnsState<StoreItem>}
+     * @memberOf TinyNgStore
+     */
     public GetItem(name: string): TnsState<StoreItem> {
         return this.state.map((s: StoreItem[]) => s.find((si: StoreItem) => si.name === name)).distinctUntilChanged();
     }
