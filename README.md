@@ -57,6 +57,9 @@ A tiny API and small footprint allow for a quick setup.
 * Runs Karma test runner and creates new results is the coverage/ folder.
 
 
+## Additional Documentation
+###  [tiny-ng-store docs](https://jscearcy.github.io/tiny-ng-store/)
+
 #### Examples
 * A collection of small examples for various Angular 2 items
     https://github.com/JScearcy/angular-2-examples
