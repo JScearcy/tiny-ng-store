@@ -8,7 +8,7 @@ A flexible store for Angular 2 projects.
 A tiny API and small footprint allow for a quick setup.
 
 ## Docs
-* https://jscearcy.github.io/tiny-ng-store/
+* [tiny-ng-store docs](https://jscearcy.github.io/tiny-ng-store/)
 
 ## Use
 
@@ -55,10 +55,6 @@ A tiny API and small footprint allow for a quick setup.
     npm install
     npm run tests
 * Runs Karma test runner and creates new results is the coverage/ folder.
-
-
-## Additional Documentation
-###  [tiny-ng-store docs](https://jscearcy.github.io/tiny-ng-store/)
 
 #### Examples
 * A collection of small examples for various Angular 2 items
