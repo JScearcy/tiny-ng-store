@@ -1,8 +1,13 @@
-var __extends = (this && this.__extends) || function (d, b) {
-    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
-    function __() { this.constructor = d; }
-    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-};
+var __extends = (this && this.__extends) || (function () {
+    var extendStatics = Object.setPrototypeOf ||
+        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+        function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -13,22 +18,24 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 (function (factory) {
-    if (typeof module === 'object' && typeof module.exports === 'object') {
-        var v = factory(require, exports); if (v !== undefined) module.exports = v;
+    if (typeof module === "object" && typeof module.exports === "object") {
+        var v = factory(require, exports);
+        if (v !== undefined) module.exports = v;
     }
-    else if (typeof define === 'function' && define.amd) {
-        define(["require", "exports", '@angular/core', 'rxjs/Observable', 'rxjs/Subject', 'rxjs/BehaviorSubject', 'rxjs/add/operator/scan', 'rxjs/add/operator/map', 'rxjs/add/operator/take', 'rxjs/add/operator/distinctUntilChanged'], factory);
+    else if (typeof define === "function" && define.amd) {
+        define(["require", "exports", "@angular/core", "rxjs/Observable", "rxjs/Subject", "rxjs/BehaviorSubject", "rxjs/add/operator/scan", "rxjs/add/operator/map", "rxjs/add/operator/take", "rxjs/add/operator/distinctUntilChanged"], factory);
     }
 })(function (require, exports) {
     "use strict";
-    var core_1 = require('@angular/core');
-    var Observable_1 = require('rxjs/Observable');
-    var Subject_1 = require('rxjs/Subject');
-    var BehaviorSubject_1 = require('rxjs/BehaviorSubject');
-    require('rxjs/add/operator/scan');
-    require('rxjs/add/operator/map');
-    require('rxjs/add/operator/take');
-    require('rxjs/add/operator/distinctUntilChanged');
+    Object.defineProperty(exports, "__esModule", { value: true });
+    var core_1 = require("@angular/core");
+    var Observable_1 = require("rxjs/Observable");
+    var Subject_1 = require("rxjs/Subject");
+    var BehaviorSubject_1 = require("rxjs/BehaviorSubject");
+    require("rxjs/add/operator/scan");
+    require("rxjs/add/operator/map");
+    require("rxjs/add/operator/take");
+    require("rxjs/add/operator/distinctUntilChanged");
     /**
      * A type of Observable<T> representing the store Observable
      * @export
@@ -39,7 +46,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     var TnsState = (function (_super) {
         __extends(TnsState, _super);
         function TnsState() {
-            _super.apply(this, arguments);
+            return _super !== null && _super.apply(this, arguments) || this;
         }
         return TnsState;
     }(Observable_1.Observable));
@@ -123,7 +130,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
          * @memberOf TinyNgStore
          */
         TinyNgStore.prototype.GetItem = function (name) {
-            return this.state.map(function (s) { return s.find(function (si) { return si.name === name; }); }).distinctUntilChanged();
+            return this.state.map(function (s) { return s.filter(function (si) { return si.name === name; })[0]; }).distinctUntilChanged();
         };
         TinyNgStore.prototype.storeInit = function (initState, actions) {
             var behavior = new BehaviorSubject_1.BehaviorSubject(initState);
@@ -153,11 +160,11 @@ var __metadata = (this && this.__metadata) || function (k, v) {
             Object.keys(item).map(function (key) { return updatedItem[key] = item[key]; });
             return updatedItem;
         };
-        TinyNgStore = __decorate([
-            core_1.Injectable(), 
-            __metadata('design:paramtypes', [])
-        ], TinyNgStore);
         return TinyNgStore;
     }());
+    TinyNgStore = __decorate([
+        core_1.Injectable(),
+        __metadata("design:paramtypes", [])
+    ], TinyNgStore);
     exports.TinyNgStore = TinyNgStore;
 });

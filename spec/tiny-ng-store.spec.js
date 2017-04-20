@@ -1,11 +1,9 @@
-/// <reference path="../typings/browser.d.ts" />
-/// <reference path="../typings/main/ambient/jasmine/jasmine.d.ts" />
 "use strict";
-// import {beforeEachProviders, beforeEach, expect, it, inject} from '@angular/core/testing';
-var tiny_ng_store_1 = require('../tiny-ng-store');
-var Observable_1 = require('rxjs/Observable');
-var Subject_1 = require('rxjs/Subject');
-require('rxjs/add/operator/take');
+exports.__esModule = true;
+var tiny_ng_store_1 = require("../tiny-ng-store");
+var Observable_1 = require("rxjs/Observable");
+var Subject_1 = require("rxjs/Subject");
+require("rxjs/add/operator/take");
 describe('tiny-ng-store', function () {
     var tinyNgStore;
     var blankObservable;

@@ -1,12 +1,12 @@
 {
   "name": "tiny-ng-store",
-  "version": "3.0.0",
+  "version": "3.0.1",
   "description": "Tiny RxJS store for @angular",
   "main": "tiny-ng-store.js",
   "scripts": {
     "test": "karma start karma.conf.js",
-    "build": "tsc -m umd && gulp umd && tsc && gulp",
-    "build-test": "tsc ./spec/tiny-ng-store.spec.ts"
+    "build": "gulp index-ts-rename && tsc -m umd && gulp umd && tsc && gulp",
+    "build-test": "tsc ./spec/tiny-ng-store.spec.ts -lib es6,dom --experimentalDecorators true"
   },
   "bugs": "https://github.com/JScearcy/tiny-ng-store/issues",
   "keywords": [
@@ -21,10 +21,12 @@
     "url": "git+https://github.com/JScearcy/tiny-ng-store.git"
   },
   "peerDependencies": {
-    "@angular/core": "^2.0.0",
-    "rxjs": "^5.0.0-beta.12"    
+    "@angular/core": "^2.0.0 || ^4.0.0",
+    "rxjs": "^5.0.0-beta.12"
   },
   "devDependencies": {
+    "@types/core-js": "^0.9.41",
+    "@types/jasmine": "^2.5.47",
     "better-spawn": "^0.3.1",
     "gulp": "^3.9.1",
     "gulp-concat": "^2.6.0",

@@ -1,15 +1,22 @@
 {
 	"compilerOptions": {
-		"target": "ES5",
+		"target": "es5",
 		"emitDecoratorMetadata": true,
 		"experimentalDecorators": true,
 		"module": "commonjs",
 		"moduleResolution": "node",
 		"outDir": "./",
-		"declaration": true
+		"declaration": true,
+		"lib": [ "es6", "dom" ]
 	},
+	"typeRoots": [
+      "../node_modules/@types"
+    ],
+    "types" : [
+      "core-js"
+    ],
 	"files": [
-    "typings/main.d.ts",
-    "./tiny-ng-store.ts"
+    	"./tiny-ng-store.ts",
+			"./index.ts"
 	]
 }

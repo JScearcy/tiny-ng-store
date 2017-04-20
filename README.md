@@ -64,6 +64,9 @@ A tiny API and small footprint allow for a quick setup.
     https://github.com/JScearcy/angular-2-examples/tree/master/src/app/tiny-ng-store-example
 
 ### Versions
+#### 3.0.1
+* Updated dependencies
+
 #### 3.0.0
 Breaking:
 * Change TnsObservable to TnsState

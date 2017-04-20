@@ -1,7 +1,3 @@
-/// <reference path="../typings/browser.d.ts" />
-/// <reference path="../typings/main/ambient/jasmine/jasmine.d.ts" />
-
-// import {beforeEachProviders, beforeEach, expect, it, inject} from '@angular/core/testing';
 import {TinyNgStore, StoreItem} from '../tiny-ng-store';
 import {Observable} from 'rxjs/Observable';
 import {Subject} from 'rxjs/Subject';
